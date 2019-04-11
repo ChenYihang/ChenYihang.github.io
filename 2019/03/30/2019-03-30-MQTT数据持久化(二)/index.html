@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="MQTT,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="守着安静的沙漠，等待着花开">
-<meta name="keywords" content="code life">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cehang&#39;s blog">
-<meta property="og:url" content="https:://imcehang.xyz/index.html">
+<meta name="description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
+<meta name="keywords" content="MQTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MQTT数据持久化(二)">
+<meta property="og:url" content="https:://imcehang.xyz/2019/03/30/2019-03-30-MQTT数据持久化(二)/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="守着安静的沙漠，等待着花开">
+<meta property="og:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-30T09:46:34.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cehang&#39;s blog">
-<meta name="twitter:description" content="守着安静的沙漠，等待着花开">
+<meta name="twitter:title" content="MQTT数据持久化(二)">
+<meta name="twitter:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https:://imcehang.xyz/">
+  <link rel="canonical" href="https:://imcehang.xyz/2019/03/30/2019-03-30-MQTT数据持久化(二)/">
 
 
 
 
 
-  <title>Cehang's blog</title>
+  <title>MQTT数据持久化(二) | Cehang's blog</title>
   
 
 
@@ -144,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/ChenYihang" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,138 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/31/2019-03-31-MQTT数据持久化(三)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cehang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cehang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/2019-03-31-MQTT数据持久化(三)/" itemprop="url">MQTT数据持久化(三)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T09:58:00+08:00">
-                2019-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          如何对MQTT做数据的存储EMQ-kafka桥接插件
-参考https://github.com/msdevanms/emqttd_plugin_kafka_bridge
-
-ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工作过程中的数据将存储至该kaf
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/31/2019-03-31-MQTT数据持久化(三)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -399,9 +270,7 @@ ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工�
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/30/2019-03-30-MQTT数据持久化(二)/" itemprop="url">MQTT数据持久化(二)</a></h1>
+          <h1 class="post-title" itemprop="name headline">MQTT数据持久化(二)</h1>
         
 
         <div class="post-meta">
@@ -451,20 +320,73 @@ ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工�
       
 
       
-        
-          
-          如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。
-Linux环境下：
-123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/30/2019-03-30-MQTT数据持久化(二)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a><strong>如何对MQTT做数据的存储</strong></h4><h5 id="源码编译EMQ"><a href="#源码编译EMQ" class="headerlink" title="源码编译EMQ"></a><strong>源码编译EMQ</strong></h5><p>​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装<a href="http://www.erlang.org/" target="_blank" rel="noopener">erlang</a>环境。</p>
+<p>Linux环境下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone -b emqx30 https://github.com/emqx/emqx-rel.git</span><br><span class="line">cd emq-relx &amp;&amp; make</span><br><span class="line">cd _rel/emqx &amp;&amp; ./bin/emqx console</span><br></pre></td></tr></table></figure>
+<p>​    分支选项<code>-b emqx30</code>为必须项，否则在编译时会出现错误提示：</p>
+<pre><font color="#88BED4">===&gt; Resolved emqx-3.1</font>
+<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
+<font color="#88BED4">===&gt; Errors generating release</font>
+<font color="#88BED4">sqlparse: Missing parameter in .app file: registered</font>
+</pre>
+
+<p>​    这个问题困扰了我很久，因为一些文档版本并没有说明这一点，一直以为是erlang版本的问题导致编译失败。</p>
+<p>​    出现下列提示则表示编译成功：</p>
+<pre><font color="#88BED4">===&gt; Starting relx build process ...</font>
+<font color="#88BED4">===&gt; Resolving OTP Applications from directories:</font>
+<font color="#88BED4">          /home/cehang/emqx-rel/deps</font>
+<font color="#88BED4">          /usr/local/lib/erlang/lib</font>
+<font color="#88BED4">          /home/cehang/emqx-rel/apps</font>
+<font color="#88BED4">===&gt; Resolved emqx-3.0.1</font>
+<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
+<font color="#88BED4">===&gt; release successfully created!</font>
+</pre>
+
+<h5 id="EMQ插件入门"><a href="#EMQ插件入门" class="headerlink" title="EMQ插件入门"></a><strong>EMQ插件入门</strong></h5><p>​    编译完EMQ后，会在deps目录中生成系统依赖包以及插件包。其中<em>emq_plugin_template</em>为EMQ提供的插件模板。基于插件模板可以定制自己的功能插件，比如我们将要实现的emq kafka桥架功能插件。针对插件开发<a href="http://docs.emqtt.cn/zh_CN/latest/plugins.html#emq-x-r3-0" target="_blank" rel="noopener">官方文档</a>也给出了一些简略的说明。</p>
+<p>​    将插件模板复制到同目录下，更改名字创建自己的插件，其目录列表如下：</p>
+<pre>├── TODO
+├── <font color="#6987E0"><b>test</b></font>
+│   └── emqx_plugin_template_SUITE.erl
+├── <font color="#6987E0"><b>src</b></font>
+│   ├── emqx_plugin_helloworld_sup.erl
+│   ├── emqx_plugin_helloworld.erl
+│   ├── emqx_plugin_helloworld_app.erl
+│   ├── emqx_cli_helloworld.erl
+│   ├── emqx_auth_helloworld.erl
+│   └── emqx_acl_helloworld.erl
+├── rebar.config
+├── README.md
+├── Makefile
+├── LICENSE
+├── <font color="#6987E0"><b>etc</b></font>
+│   └── emqx_plugin_helloworld.config
+└── erlang.mk
+</pre>
+
+<p>​    其中<em>.config为配置文件，\</em>_SUITE为单元测试文件，/src/*.erl是插件的源码。修改目录下源码中的模块名字，改问与文件名对应的插件名字。更改完执行make，如果报错则检查是否修改完整。</p>
+<p>​    回到主目录下，修改<code>relx.config</code>文件，添加:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;emqx_plugin_helloworld,load&#125;</span><br></pre></td></tr></table></figure>
+<p>​    在主目录下make，编译成功后运行EMQ，然后可通过EMQ自带的Dashboard检查插件添加效果。</p>
+<p>​    修改<code>emqx_plugin_helloworld.erl</code>文件，在load和unload中分别添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;load helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;unload helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
+<p>​    重新编译插件和工程，在控制台模式下启动emq</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/emqx-rel/_rel/emqx/bin/</span><br><span class="line">./emqx console</span><br></pre></td></tr></table></figure>
+<p>​    在dashboard中启动和关闭helloworld插件</p>
+<pre>Starting emqx on node emqx@127.0.0.1
+Start http:management listener on 8080 successfully.
+Start http:dashboard listener on 18083 successfully.
+Start mqtt:tcp listener on 127.0.0.1:11883 successfully.
+Start mqtt:tcp listener on 0.0.0.0:1883 successfully.
+Start mqtt:ws listener on 0.0.0.0:8083 successfully.
+Start mqtt:ssl listener on 0.0.0.0:8883 successfully.
+Start mqtt:wss listener on 0.0.0.0:8084 successfully.
+EMQ X Broker b461e26f is running now!
+Eshell V10.0  (abort with ^G)
+(emqx@127.0.0.1)1&gt; 
+(emqx@127.0.0.1)1&gt; load helloworld plugin
+(emqx@127.0.0.1)1&gt; unload helloworld plugin
+</pre>
       
     </div>
     
@@ -479,270 +401,40 @@ Linux环境下：
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/27/2019-03-27-MQTT数据持久化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cehang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cehang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/27/2019-03-27-MQTT数据持久化/" itemprop="url">MQTT数据持久化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T09:35:00+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/MQTT/" rel="tag"># MQTT</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：
-
-在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/2019-03-27-MQTT数据持久化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/2019-03-27-MQTT数据持久化/" rel="next" title="MQTT数据持久化">
+                <i class="fa fa-chevron-left"></i> MQTT数据持久化
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/25/2019-03-25-hello-markdown/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cehang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cehang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/25/2019-03-25-hello-markdown/" itemprop="url">Hello Markdown</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T09:35:00+08:00">
-                2019-03-25
-              </time>
+              <a href="/2019/03/31/2019-03-31-MQTT数据持久化(三)/" rel="prev" title="MQTT数据持久化(三)">
+                MQTT数据持久化(三) <i class="fa fa-chevron-right"></i>
+              </a>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。
-Markdown语法
-标题，使用1-6个#字符作
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/25/2019-03-25-hello-markdown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -752,10 +444,11 @@ Markdown语法
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -763,6 +456,15 @@ Markdown语法
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQyNi8xOTk2Nw"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -783,8 +485,17 @@ Markdown语法
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -859,6 +570,22 @@ Markdown语法
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码编译EMQ"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译EMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ插件入门"><span class="nav-number">1.2.</span> <span class="nav-text">EMQ插件入门</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -992,6 +719,10 @@ Markdown语法
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1020,6 +751,17 @@ Markdown语法
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
