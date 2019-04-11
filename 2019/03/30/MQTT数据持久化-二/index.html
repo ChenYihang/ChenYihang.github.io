@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
+<meta name="description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
 <meta name="keywords" content="MQTT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MQTT数据持久化(二)">
 <meta property="og:url" content="https:://imcehang.xyz/2019/03/30/MQTT数据持久化-二/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
+<meta property="og:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-11T06:39:59.825Z">
+<meta property="og:updated_time" content="2019-04-11T06:56:10.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MQTT数据持久化(二)">
-<meta name="twitter:description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
+<meta name="twitter:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
 
 
 
@@ -320,7 +320,7 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储**"></a>如何对MQTT做数据的存储**</h4><h5 id="源码编译EMQ"><a href="#源码编译EMQ" class="headerlink" title="源码编译EMQ"></a><strong>源码编译EMQ</strong></h5><p>​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装<a href="http://www.erlang.org/" target="_blank" rel="noopener">erlang</a>环境。</p>
+        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a>如何对MQTT做数据的存储</h4><h5 id="源码编译EMQ"><a href="#源码编译EMQ" class="headerlink" title="源码编译EMQ"></a><strong>源码编译EMQ</strong></h5><p>​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装<a href="http://www.erlang.org/" target="_blank" rel="noopener">erlang</a>环境。</p>
 <p>Linux环境下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone -b emqx30 https://github.com/emqx/emqx-rel.git</span><br><span class="line">cd emq-relx &amp;&amp; make</span><br><span class="line">cd _rel/emqx &amp;&amp; ./bin/emqx console</span><br></pre></td></tr></table></figure>
 <p>​    分支选项<code>-b emqx30</code>为必须项，否则在编译时会出现错误提示：</p>
@@ -583,7 +583,7 @@ Eshell V10.0  (abort with ^G)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储**</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码编译EMQ"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译EMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ插件入门"><span class="nav-number">1.2.</span> <span class="nav-text">EMQ插件入门</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码编译EMQ"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译EMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ插件入门"><span class="nav-number">1.2.</span> <span class="nav-text">EMQ插件入门</span></a></li></ol></li></ol></div>
             
 
           </div>

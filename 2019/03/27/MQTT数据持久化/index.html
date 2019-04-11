@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta name="description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
 <meta name="keywords" content="MQTT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MQTT数据持久化">
 <meta property="og:url" content="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta property="og:description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
-<meta property="og:updated_time" content="2019-04-11T06:31:13.714Z">
+<meta property="og:updated_time" content="2019-04-11T06:56:03.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MQTT数据持久化">
-<meta name="twitter:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta name="twitter:description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
 <meta name="twitter:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
 
 
@@ -322,7 +322,7 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储**"></a>如何对MQTT做数据的存储**</h4><p>​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：</p>
+        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a>如何对MQTT做数据的存储</h4><p>​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：</p>
 <ul>
 <li>在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符<code>#</code>来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。</li>
 <li>借助<a href="http://www.emqtt.com/" target="_blank" rel="noopener">EMQ</a>的钩子函数与REST API，参考<a href="https://www.raviyp.com/embedded/233-learn-how-to-save-mqtt-messages-into-a-mysql-database" target="_blank" rel="noopener">Learn, How to save MQTT messages into a MySQL Database</a></li>
@@ -547,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMQ-HOOK"><span class="nav-number">2.</span> <span class="nav-text">EMQ-HOOK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">3.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What‘s-it"><span class="nav-number">3.1.</span> <span class="nav-text">What‘s it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-use"><span class="nav-number">3.2.</span> <span class="nav-text">How to use</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMQ-HOOK"><span class="nav-number">2.</span> <span class="nav-text">EMQ-HOOK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">3.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What‘s-it"><span class="nav-number">3.1.</span> <span class="nav-text">What‘s it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-use"><span class="nav-number">3.2.</span> <span class="nav-text">How to use</span></a></li></ol></li></ol></div>
             
 
           </div>
