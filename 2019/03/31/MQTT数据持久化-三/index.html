@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta name="description" content="如何对MQTT做数据的存储EMQ-kafka桥接插件 参考https://github.com/msdevanms/emqttd_plugin_kafka_bridge  ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工作过程中的数据将存储至该kafka容器中，这是桥接的第一步，即将EMQ数据通过kafka生产者存储起来。ekaf是一个微型、高性能">
 <meta name="keywords" content="MQTT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MQTT数据持久化">
-<meta property="og:url" content="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/index.html">
+<meta property="og:title" content="MQTT数据持久化(三)">
+<meta property="og:url" content="https:://imcehang.xyz/2019/03/31/MQTT数据持久化-三/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta property="og:description" content="如何对MQTT做数据的存储EMQ-kafka桥接插件 参考https://github.com/msdevanms/emqttd_plugin_kafka_bridge  ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工作过程中的数据将存储至该kafka容器中，这是桥接的第一步，即将EMQ数据通过kafka生产者存储起来。ekaf是一个微型、高性能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
-<meta property="og:updated_time" content="2019-04-11T06:31:13.714Z">
+<meta property="og:image" content="https:/2019/03/31/MQTT数据持久化-三/photo2.png">
+<meta property="og:updated_time" content="2019-04-11T06:38:08.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MQTT数据持久化">
-<meta name="twitter:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
-<meta name="twitter:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
+<meta name="twitter:title" content="MQTT数据持久化(三)">
+<meta name="twitter:description" content="如何对MQTT做数据的存储EMQ-kafka桥接插件 参考https://github.com/msdevanms/emqttd_plugin_kafka_bridge  ekaf​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工作过程中的数据将存储至该kafka容器中，这是桥接的第一步，即将EMQ数据通过kafka生产者存储起来。ekaf是一个微型、高性能">
+<meta name="twitter:image" content="https:/2019/03/31/MQTT数据持久化-三/photo2.png">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+  <link rel="canonical" href="https:://imcehang.xyz/2019/03/31/MQTT数据持久化-三/">
 
 
 
 
 
-  <title>MQTT数据持久化 | Cehang's blog</title>
+  <title>MQTT数据持久化(三) | Cehang's blog</title>
   
 
 
@@ -255,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/31/MQTT数据持久化-三/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cehang">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MQTT数据持久化</h1>
+          <h1 class="post-title" itemprop="name headline">MQTT数据持久化(三)</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T18:27:20+08:00">
-                2019-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T14:32:28+08:00">
+                2019-03-31
               </time>
             
 
@@ -322,37 +322,54 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储**"></a>如何对MQTT做数据的存储**</h4><p>​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：</p>
+        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a><strong>如何对MQTT做数据的存储</strong></h4><h5 id="EMQ-kafka桥接插件"><a href="#EMQ-kafka桥接插件" class="headerlink" title="EMQ-kafka桥接插件"></a><strong>EMQ-kafka桥接插件</strong></h5><blockquote>
+<p>参考<a href="https://github.com/msdevanms/emqttd_plugin_kafka_bridge" target="_blank" rel="noopener">https://github.com/msdevanms/emqttd_plugin_kafka_bridge</a></p>
+</blockquote>
+<h6 id="ekaf"><a href="#ekaf" class="headerlink" title="ekaf"></a><strong>ekaf</strong></h6><p>​    EMQ-kafka桥接的基本原理是构建一个kafka producer，EMQ工作过程中的数据将存储至该kafka容器中，这是桥接的第一步，即将EMQ数据通过kafka生产者存储起来。<a href="https://github.com/helpshift/ekaf" target="_blank" rel="noopener">ekaf</a>是一个微型、高性能erlang kafka producer，其具体实现源码暂时没有精力去拜读（看不懂），借助ekaf可以帮我们实现桥接的第一步。</p>
+<p>​    为此，在插件目录下Makefile中添加依赖：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BUILD_DEPS = emqx cuttlefish ekaf</span><br><span class="line">dep_ekaf = git https://github.com/helpshift/ekaf master</span><br></pre></td></tr></table></figure>
+<p>​    rebar.config中添加ekaf依赖包</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;deps, [</span><br><span class="line">    &#123;ekaf,   <span class="string">".*"</span>, &#123;git, <span class="string">"https://github.com/helpshift/ekaf.git"</span>,  <span class="string">"829453cb26876e4b483c9875a63ff8551ae06c09"</span>&#125;&#125;</span><br><span class="line">]&#125;.</span><br></pre></td></tr></table></figure>
+<h6 id="基于hook框架的桥接功能实现"><a href="#基于hook框架的桥接功能实现" class="headerlink" title="基于hook框架的桥接功能实现"></a><strong>基于hook框架的桥接功能实现</strong></h6><p>​    分析<em>emqttd_plugin_kafka_bridge.erl</em> 源码，主要利用ekaf的API函数以及EMQ动作的回调函数来实现所需的功能。其主要功能函数：</p>
 <ul>
-<li>在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符<code>#</code>来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。</li>
-<li>借助<a href="http://www.emqtt.com/" target="_blank" rel="noopener">EMQ</a>的钩子函数与REST API，参考<a href="https://www.raviyp.com/embedded/233-learn-how-to-save-mqtt-messages-into-a-mysql-database" target="_blank" rel="noopener">Learn, How to save MQTT messages into a MySQL Database</a></li>
-<li>借助EMQ的钩子函数以及一个消息队列中间件<a href="http://kafka.apache.org/" target="_blank" rel="noopener">Kafka</a>,通过kafka聚合和采集消息，缓冲到数据仓库中以待后续处理。基于应用框架特点使用此方法作为解决方案。</li>
-</ul>
-<h4 id="EMQ-HOOK"><a href="#EMQ-HOOK" class="headerlink" title="EMQ-HOOK"></a><strong>EMQ-HOOK</strong></h4><p>​    EMQ的一个优点是其优秀的扩展性，用户可以通过模块注册和钩子(Hooks)机制，支持用户开发扩展插件定制服务器认证鉴权与业务功能。</p>
-<blockquote>
-<p>​    钩子(Hook) 采用职责链设计模式(<a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" target="_blank" rel="noopener">Chain-of-responsibility_pattern</a>)，扩展模块或插件向钩子注册回调函数，系统在客户端上下线、主题订阅或消息发布确认时，触发钩子顺序执行回调函数。EMQ 消息服务器在客户端上下线、主题订阅、消息收发位置设计了扩展钩子(Hook)。</p>
-</blockquote>
-<p>​    由于对Erlang实在过于陌生，其具体实现原理以及使用方法可参考<a href="https://developer.emqx.io/docs/emq/v3/cn/design.html#hook" target="_blank" rel="noopener">EMQ官方文档</a>。</p>
-<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a><strong>Kafka</strong></h4><h5 id="What‘s-it"><a href="#What‘s-it" class="headerlink" title="What‘s it"></a><strong>What‘s it</strong></h5><p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">    Apache kafka</a>是一种消息中间件，是目标是实现实时的流处理，采用了生产者消费者模型并可作为集群运行在多个服务器上。更多关于Kafka的介绍参考官方文档或中文教程：<a href="http://orchome.com/kafka/index" target="_blank" rel="noopener">http://orchome.com/kafka/index</a> 。</p>
-<h5 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use"></a><strong>How to use</strong></h5><p>​    安装部署参考下面链接：</p>
-<blockquote>
-<p>ubuntu18.04下Kafka安装与部署 <a href="https://blog.csdn.net/u010889616/article/details/80641922" target="_blank" rel="noopener">https://blog.csdn.net/u010889616/article/details/80641922</a></p>
-</blockquote>
-<p>​    遇到的问题：</p>
-<ul>
-<li><p>Kafka自带的zookeeper在我的环境下（ubuntu 18.04）运行不正常，所以需要独立安装zookeeper。</p>
-<blockquote>
-<p>解决方法：</p>
-</blockquote>
+<li><p><code>ekaf_init</code>，ekaf包初始化，kafka环境变量的设置</p>
 </li>
-<li><p>建立消费者时报错：<code>zookeeper is not a recognized option</code> ，原因是kafka版本问题。</p>
-<blockquote>
-<p>解决方法：参考<a href="https://www.jianshu.com/p/80a10811d5cb" target="_blank" rel="noopener">https://www.jianshu.com/p/80a10811d5cb</a>    </p>
-</blockquote>
-<p>部署成功如下：</p>
+<li><p><code>ekaf:produce_async_batched</code>，异步发布kafka消息</p>
+</li>
+<li><p><code>on_client_connected</code>等多个EMQ功能回调函数，实现具体功能</p>
+<p>举例<code>on_message_publish</code>，首先export勾函数：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-export</span><span class="params">([on_message_publish/<span class="number">2</span>])</span>.</span><br></pre></td></tr></table></figure>
+<p>在插件load回调中需要初始化ekaf包以及注册勾函数：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">load</span><span class="params">(Env)</span> -&gt;</span></span><br><span class="line">    ekaf_init([Env]),</span><br><span class="line">    <span class="comment">%% ......</span></span><br><span class="line">    emqttd:hook('message.publish', <span class="keyword">fun</span> ?MODULE:on_message_publish/<span class="number">2</span>, [Env]).</span><br></pre></td></tr></table></figure>
+<p><code>on_message_publish</code>函数中主要是封装json数据并通过<code>produce_async_batched</code>发布。</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">on_message_publish</span><span class="params">(Message, _Env)</span> -&gt;</span></span><br><span class="line">    io:format(<span class="string">"publish ~s~n"</span>, [emqttd_message:format(Message)]),   </span><br><span class="line">    From = Message#mqtt_message.from,</span><br><span class="line">    Sender =  Message#mqtt_message.sender,</span><br><span class="line">    Topic = Message#mqtt_message.topic,</span><br><span class="line">    Payload = Message#mqtt_message.payload, </span><br><span class="line">    QoS = Message#mqtt_message.qos,</span><br><span class="line">    Timestamp = Message#mqtt_message.timestamp,</span><br><span class="line">    Json = mochijson2:encode([</span><br><span class="line">        &#123;type, &lt;&lt;<span class="string">"published"</span>&gt;&gt;&#125;,</span><br><span class="line">        &#123;client_id, From&#125;,</span><br><span class="line">        &#123;topic, Topic&#125;,</span><br><span class="line">        &#123;payload, Payload&#125;,</span><br><span class="line">        &#123;qos, QoS&#125;,</span><br><span class="line">        &#123;cluster_node, node()&#125;,</span><br><span class="line">        &#123;ts, emqttd_time:now_to_secs(Timestamp)&#125;</span><br><span class="line">    ]),</span><br><span class="line"></span><br><span class="line">    ekaf:produce_async_batched(&lt;&lt;<span class="string">"broker_message"</span>&gt;&gt;, list_to_binary(Json)),</span><br><span class="line"></span><br><span class="line">    &#123;ok, Message&#125;.</span><br></pre></td></tr></table></figure>
+<p>另外，在etc/plugin.config中需要添加kafka相关配置选项，</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;emqttd_plugin_kafka_bridge, [</span><br><span class="line">  	&#123;kafka, [</span><br><span class="line">      &#123;bootstrap_broker, &#123;<span class="string">"127.0.0.1"</span>, <span class="number">9092</span>&#125; &#125;,</span><br><span class="line">      &#123;partition_strategy, strict_round_robin&#125;</span><br><span class="line">    ]&#125;</span><br><span class="line">  ]&#125;</span><br><span class="line">].</span><br></pre></td></tr></table></figure>
+<p>然后进行工程的编译。</p>
+</li>
+<li><p>问题1：提示编译失败找不到头文件，原因是源码中用的是旧版本的EMQTT，现在已经改名为EMQ，更改为对应的路径及名字即可。</p>
+</li>
+<li><p>问题2：未定义的变量名，原因同上，更改为符合EMQX中的定义即可，如：</p>
+<p><del>#mqtt_message</del>  =&gt; #message，又如message‘类’中的<code>sender</code>成员在EMQ中已经删去了。</p>
+<p>但错误不仅仅这些，我对Erlang语法不太熟悉，所以对照着EMQX里面其他插件进行了许多更多更改直至编译通过。</p>
+<h6 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a><strong>功能测试</strong></h6><p><del>emmm，kafka消费者好像没收到数据，心态崩了，回头再找原因:(</del></p>
+<p>原因是依赖关系没有设置正确。</p>
+<ol>
+<li><p>在主目录Makefile中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEPS += emqx_plugin_kafka_bridge</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>relx.config中添加kafkamocker，ekaf，{emqx_plugin_kafka_bridge,load}</p>
+</li>
+<li><p>找不到mochijson2模块：</p>
+<p>手动添加该模块：</p>
+<p><a href="https://github.com/mochi/mochiweb/blob/master/src/mochijson2.erl" target="_blank" rel="noopener">https://github.com/mochi/mochiweb/blob/master/src/mochijson2.erl</a></p>
+<p>疑惑为什么别人不需要手动添加（erlang自带？），相关的资料太少了一度以为是程序上的问题。</p>
+</li>
+</ol>
 </li>
 </ul>
-<p><img src="/2019/03/27/MQTT数据持久化/photo1.png" alt="部署成功"></p>
+<p>​    测试步骤：开启zookeeper，开启kafka，创建kafka消费者 ，开启EMQ桥接插件，进行连接订阅发布等操作，能够看到在消费者窗口上正确地接收到了数据。</p>
+<p><img src="/2019/03/31/MQTT数据持久化-三/photo2.png" alt="成功显示"></p>
 
       
     </div>
@@ -383,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/hello-markdown/" rel="next" title="hello markdown">
-                <i class="fa fa-chevron-left"></i> hello markdown
+              <a href="/2019/03/30/MQTT数据持久化-二/" rel="next" title="MQTT数据持久化(二)">
+                <i class="fa fa-chevron-left"></i> MQTT数据持久化(二)
               </a>
             
           </div>
@@ -392,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/30/MQTT数据持久化-二/" rel="prev" title="MQTT数据持久化(二)">
-                MQTT数据持久化(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMQ-HOOK"><span class="nav-number">2.</span> <span class="nav-text">EMQ-HOOK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">3.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What‘s-it"><span class="nav-number">3.1.</span> <span class="nav-text">What‘s it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-use"><span class="nav-number">3.2.</span> <span class="nav-text">How to use</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ-kafka桥接插件"><span class="nav-number">1.1.</span> <span class="nav-text">EMQ-kafka桥接插件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ekaf"><span class="nav-number">1.1.1.</span> <span class="nav-text">ekaf</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#基于hook框架的桥接功能实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">基于hook框架的桥接功能实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#功能测试"><span class="nav-number">1.1.3.</span> <span class="nav-text">功能测试</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta name="description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
 <meta name="keywords" content="MQTT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MQTT数据持久化">
-<meta property="og:url" content="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/index.html">
+<meta property="og:title" content="MQTT数据持久化(二)">
+<meta property="og:url" content="https:://imcehang.xyz/2019/03/30/MQTT数据持久化-二/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
+<meta property="og:description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
-<meta property="og:updated_time" content="2019-04-11T06:31:13.714Z">
+<meta property="og:updated_time" content="2019-04-11T06:39:59.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MQTT数据持久化">
-<meta name="twitter:description" content="如何对MQTT做数据的存储**​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数">
-<meta name="twitter:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
+<meta name="twitter:title" content="MQTT数据持久化(二)">
+<meta name="twitter:description" content="如何对MQTT做数据的存储**源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp;">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+  <link rel="canonical" href="https:://imcehang.xyz/2019/03/30/MQTT数据持久化-二/">
 
 
 
 
 
-  <title>MQTT数据持久化 | Cehang's blog</title>
+  <title>MQTT数据持久化(二) | Cehang's blog</title>
   
 
 
@@ -255,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/30/MQTT数据持久化-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cehang">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MQTT数据持久化</h1>
+          <h1 class="post-title" itemprop="name headline">MQTT数据持久化(二)</h1>
         
 
         <div class="post-meta">
@@ -284,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T18:27:20+08:00">
-                2019-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T17:46:37+08:00">
+                2019-03-30
               </time>
             
 
@@ -322,37 +320,75 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储**"></a>如何对MQTT做数据的存储**</h4><p>​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：</p>
-<ul>
-<li>在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符<code>#</code>来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。</li>
-<li>借助<a href="http://www.emqtt.com/" target="_blank" rel="noopener">EMQ</a>的钩子函数与REST API，参考<a href="https://www.raviyp.com/embedded/233-learn-how-to-save-mqtt-messages-into-a-mysql-database" target="_blank" rel="noopener">Learn, How to save MQTT messages into a MySQL Database</a></li>
-<li>借助EMQ的钩子函数以及一个消息队列中间件<a href="http://kafka.apache.org/" target="_blank" rel="noopener">Kafka</a>,通过kafka聚合和采集消息，缓冲到数据仓库中以待后续处理。基于应用框架特点使用此方法作为解决方案。</li>
-</ul>
-<h4 id="EMQ-HOOK"><a href="#EMQ-HOOK" class="headerlink" title="EMQ-HOOK"></a><strong>EMQ-HOOK</strong></h4><p>​    EMQ的一个优点是其优秀的扩展性，用户可以通过模块注册和钩子(Hooks)机制，支持用户开发扩展插件定制服务器认证鉴权与业务功能。</p>
-<blockquote>
-<p>​    钩子(Hook) 采用职责链设计模式(<a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" target="_blank" rel="noopener">Chain-of-responsibility_pattern</a>)，扩展模块或插件向钩子注册回调函数，系统在客户端上下线、主题订阅或消息发布确认时，触发钩子顺序执行回调函数。EMQ 消息服务器在客户端上下线、主题订阅、消息收发位置设计了扩展钩子(Hook)。</p>
-</blockquote>
-<p>​    由于对Erlang实在过于陌生，其具体实现原理以及使用方法可参考<a href="https://developer.emqx.io/docs/emq/v3/cn/design.html#hook" target="_blank" rel="noopener">EMQ官方文档</a>。</p>
-<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a><strong>Kafka</strong></h4><h5 id="What‘s-it"><a href="#What‘s-it" class="headerlink" title="What‘s it"></a><strong>What‘s it</strong></h5><p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">    Apache kafka</a>是一种消息中间件，是目标是实现实时的流处理，采用了生产者消费者模型并可作为集群运行在多个服务器上。更多关于Kafka的介绍参考官方文档或中文教程：<a href="http://orchome.com/kafka/index" target="_blank" rel="noopener">http://orchome.com/kafka/index</a> 。</p>
-<h5 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use"></a><strong>How to use</strong></h5><p>​    安装部署参考下面链接：</p>
-<blockquote>
-<p>ubuntu18.04下Kafka安装与部署 <a href="https://blog.csdn.net/u010889616/article/details/80641922" target="_blank" rel="noopener">https://blog.csdn.net/u010889616/article/details/80641922</a></p>
-</blockquote>
-<p>​    遇到的问题：</p>
-<ul>
-<li><p>Kafka自带的zookeeper在我的环境下（ubuntu 18.04）运行不正常，所以需要独立安装zookeeper。</p>
-<blockquote>
-<p>解决方法：</p>
-</blockquote>
-</li>
-<li><p>建立消费者时报错：<code>zookeeper is not a recognized option</code> ，原因是kafka版本问题。</p>
-<blockquote>
-<p>解决方法：参考<a href="https://www.jianshu.com/p/80a10811d5cb" target="_blank" rel="noopener">https://www.jianshu.com/p/80a10811d5cb</a>    </p>
-</blockquote>
-<p>部署成功如下：</p>
-</li>
-</ul>
-<p><img src="/2019/03/27/MQTT数据持久化/photo1.png" alt="部署成功"></p>
+        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储**"></a>如何对MQTT做数据的存储**</h4><h5 id="源码编译EMQ"><a href="#源码编译EMQ" class="headerlink" title="源码编译EMQ"></a><strong>源码编译EMQ</strong></h5><p>​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装<a href="http://www.erlang.org/" target="_blank" rel="noopener">erlang</a>环境。</p>
+<p>Linux环境下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone -b emqx30 https://github.com/emqx/emqx-rel.git</span><br><span class="line">cd emq-relx &amp;&amp; make</span><br><span class="line">cd _rel/emqx &amp;&amp; ./bin/emqx console</span><br></pre></td></tr></table></figure>
+<p>​    分支选项<code>-b emqx30</code>为必须项，否则在编译时会出现错误提示：</p>
+<pre><font color="#88BED4">===&gt; Resolved emqx-3.1</font>
+<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
+<font color="#88BED4">===&gt; Errors generating release</font>
+<font color="#88BED4">sqlparse: Missing parameter in .app file: registered</font>
+</pre>
+
+<p>​    这个问题困扰了我很久，因为一些文档版本并没有说明这一点，一直以为是erlang版本的问题导致编译失败。</p>
+<p>​    出现下列提示则表示编译成功：</p>
+<pre><font color="#88BED4">===&gt; Starting relx build process ...</font>
+<font color="#88BED4">===&gt; Resolving OTP Applications from directories:</font>
+<font color="#88BED4">          /home/cehang/emqx-rel/deps</font>
+<font color="#88BED4">          /usr/local/lib/erlang/lib</font>
+<font color="#88BED4">          /home/cehang/emqx-rel/apps</font>
+<font color="#88BED4">===&gt; Resolved emqx-3.0.1</font>
+<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
+<font color="#88BED4">===&gt; release successfully created!</font>
+</pre>
+
+<h5 id="EMQ插件入门"><a href="#EMQ插件入门" class="headerlink" title="EMQ插件入门"></a><strong>EMQ插件入门</strong></h5><p>​    编译完EMQ后，会在deps目录中生成系统依赖包以及插件包。其中<em>emq_plugin_template</em>为EMQ提供的插件模板。基于插件模板可以定制自己的功能插件，比如我们将要实现的emq kafka桥架功能插件。针对插件开发<a href="http://docs.emqtt.cn/zh_CN/latest/plugins.html#emq-x-r3-0" target="_blank" rel="noopener">官方文档</a>也给出了一些简略的说明。</p>
+<p>​    将插件模板复制到同目录下，更改名字创建自己的插件，其目录列表如下：</p>
+<pre>├── TODO
+├── <font color="#6987E0"><b>test</b></font>
+│   └── emqx_plugin_template_SUITE.erl
+├── <font color="#6987E0"><b>src</b></font>
+│   ├── emqx_plugin_helloworld_sup.erl
+│   ├── emqx_plugin_helloworld.erl
+│   ├── emqx_plugin_helloworld_app.erl
+│   ├── emqx_cli_helloworld.erl
+│   ├── emqx_auth_helloworld.erl
+│   └── emqx_acl_helloworld.erl
+├── rebar.config
+├── README.md
+├── Makefile
+├── LICENSE
+├── <font color="#6987E0"><b>etc</b></font>
+│   └── emqx_plugin_helloworld.config
+└── erlang.mk
+</pre>
+
+<p>​    其中<em>.config为配置文件，\</em>_SUITE为单元测试文件，/src/*.erl是插件的源码。修改目录下源码中的模块名字，改问与文件名对应的插件名字。更改完执行make，如果报错则检查是否修改完整。</p>
+<p>​    回到主目录下，修改<code>relx.config</code>文件，添加:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;emqx_plugin_helloworld,load&#125;</span><br></pre></td></tr></table></figure>
+<p>​    在主目录下make，编译成功后运行EMQ，然后可通过EMQ自带的Dashboard检查插件添加效果。</p>
+<p>​    修改<code>emqx_plugin_helloworld.erl</code>文件，在load和unload中分别添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;load helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;unload helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
+<p>​    重新编译插件和工程，在控制台模式下启动emq</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/emqx-rel/_rel/emqx/bin/</span><br><span class="line">./emqx console</span><br></pre></td></tr></table></figure>
+<p>​    在dashboard中启动和关闭helloworld插件</p>
+<pre>Starting emqx on node emqx@127.0.0.1
+Start http:management listener on 8080 successfully.
+Start http:dashboard listener on 18083 successfully.
+Start mqtt:tcp listener on 127.0.0.1:11883 successfully.
+Start mqtt:tcp listener on 0.0.0.0:1883 successfully.
+Start mqtt:ws listener on 0.0.0.0:8083 successfully.
+Start mqtt:ssl listener on 0.0.0.0:8883 successfully.
+Start mqtt:wss listener on 0.0.0.0:8084 successfully.
+EMQ X Broker b461e26f is running now!
+Eshell V10.0  (abort with ^G)
+(emqx@127.0.0.1)1&gt; 
+(emqx@127.0.0.1)1&gt; load helloworld plugin
+(emqx@127.0.0.1)1&gt; unload helloworld plugin
+</pre>
+
+<p>​    </p>
 
       
     </div>
@@ -383,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/hello-markdown/" rel="next" title="hello markdown">
-                <i class="fa fa-chevron-left"></i> hello markdown
+              <a href="/2019/03/27/MQTT数据持久化/" rel="next" title="MQTT数据持久化">
+                <i class="fa fa-chevron-left"></i> MQTT数据持久化
               </a>
             
           </div>
@@ -393,8 +429,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/30/MQTT数据持久化-二/" rel="prev" title="MQTT数据持久化(二)">
-                MQTT数据持久化(二) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/31/MQTT数据持久化-三/" rel="prev" title="MQTT数据持久化(三)">
+                MQTT数据持久化(三) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -547,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMQ-HOOK"><span class="nav-number">2.</span> <span class="nav-text">EMQ-HOOK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">3.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What‘s-it"><span class="nav-number">3.1.</span> <span class="nav-text">What‘s it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-use"><span class="nav-number">3.2.</span> <span class="nav-text">How to use</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储**</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码编译EMQ"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译EMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ插件入门"><span class="nav-number">1.2.</span> <span class="nav-text">EMQ插件入门</span></a></li></ol></li></ol></div>
             
 
           </div>
