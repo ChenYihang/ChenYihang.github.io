@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MQTT,">
+  <meta name="keywords" content="Markdown,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
-<meta name="keywords" content="MQTT">
+<meta name="description" content="What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。 Markdown语法 标题，使用1-6个#字符作为行起始，对应6个等级，如 123# H1## H2### H3  引用，Markdown使用ema">
+<meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MQTT数据持久化(二)">
-<meta property="og:url" content="https:://imcehang.xyz/2019/03/30/2019-03-30-MQTT数据持久化(二)/index.html">
+<meta property="og:title" content="Hello Markdown">
+<meta property="og:url" content="https:://imcehang.xyz/2019/03/01/hello-markdown/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
+<meta property="og:description" content="What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。 Markdown语法 标题，使用1-6个#字符作为行起始，对应6个等级，如 123# H1## H2### H3  引用，Markdown使用ema">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-30T09:46:34.324Z">
+<meta property="og:updated_time" content="2019-04-11T03:55:27.728Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MQTT数据持久化(二)">
-<meta name="twitter:description" content="如何对MQTT做数据的存储源码编译EMQ​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装erlang环境。 Linux环境下： 123git clone -b emqx30 https://github.com/emqx/emqx-rel.gitcd emq-relx &amp;amp;&amp;amp; makecd _rel/emqx &amp;amp;&amp;amp; ./">
+<meta name="twitter:title" content="Hello Markdown">
+<meta name="twitter:description" content="What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。 Markdown语法 标题，使用1-6个#字符作为行起始，对应6个等级，如 123# H1## H2### H3  引用，Markdown使用ema">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https:://imcehang.xyz/2019/03/30/2019-03-30-MQTT数据持久化(二)/">
+  <link rel="canonical" href="https:://imcehang.xyz/2019/03/01/hello-markdown/">
 
 
 
 
 
-  <title>MQTT数据持久化(二) | Cehang's blog</title>
+  <title>Hello Markdown | Cehang's blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/30/2019-03-30-MQTT数据持久化(二)/">
+    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/01/hello-markdown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cehang">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MQTT数据持久化(二)</h1>
+          <h1 class="post-title" itemprop="name headline">Hello Markdown</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T08:46:00+08:00">
-                2019-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T17:35:00+08:00">
+                2019-03-01
               </time>
             
 
@@ -320,73 +320,73 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a><strong>如何对MQTT做数据的存储</strong></h4><h5 id="源码编译EMQ"><a href="#源码编译EMQ" class="headerlink" title="源码编译EMQ"></a><strong>源码编译EMQ</strong></h5><p>​    由于需要创建自己的插件，所以得重新编译EMQ。EMQ是erlang写的，所以还需要安装<a href="http://www.erlang.org/" target="_blank" rel="noopener">erlang</a>环境。</p>
-<p>Linux环境下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone -b emqx30 https://github.com/emqx/emqx-rel.git</span><br><span class="line">cd emq-relx &amp;&amp; make</span><br><span class="line">cd _rel/emqx &amp;&amp; ./bin/emqx console</span><br></pre></td></tr></table></figure>
-<p>​    分支选项<code>-b emqx30</code>为必须项，否则在编译时会出现错误提示：</p>
-<pre><font color="#88BED4">===&gt; Resolved emqx-3.1</font>
-<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
-<font color="#88BED4">===&gt; Errors generating release</font>
-<font color="#88BED4">sqlparse: Missing parameter in .app file: registered</font>
-</pre>
+        <h4 id="What-is-Markdown？"><a href="#What-is-Markdown？" class="headerlink" title="What is Markdown？"></a><strong>What is Markdown？</strong></h4><p><a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener"><strong>Markdown</strong></a>是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。</p>
+<h4 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a><strong>Markdown语法</strong></h4><ul>
+<li><p>标题，使用1-6个<code>#</code>字符作为行起始，对应6个等级，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># H1</span><br><span class="line">## H2</span><br><span class="line">### H3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用，Markdown使用email-style的<code>&gt;</code>字符标明引用块如</p>
+<blockquote>
+<p>这是一个引用块</p>
+<blockquote>
+<p>层级引用</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>列表，使用<code>*</code>字符标明列表或者输入1. 2.如</p>
+<ul>
+<li>list1</li>
+<li>list2</li>
+<li>list3<ol>
+<li>list1</li>
+<li>list2</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>任务列表，使用<code>[]</code>或<code>[x]</code>  (完成或未完成)，如</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> task1</li>
+<li style="list-style: none"><input type="checkbox" checked> task1   </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>代码块，使用```并回车</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> objType&gt;</span><br><span class="line"><span class="function"><span class="keyword">const</span> objType&amp; <span class="title">GetMax</span><span class="params">(<span class="keyword">const</span> objType&amp; value1, <span class="keyword">const</span> objType&amp; value2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span> (value1 &gt; value2)</span><br><span class="line"><span class="keyword">return</span> value1;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>链接</p>
+<ol>
+<li><p>内部链接，格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[name](your link)//[google](https://www/google.com)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考形式链接，格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[name][id]    //[google][1]</span><br><span class="line"></span><br><span class="line">[id]: your link   // [1]:https://www/google.com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>斜体 使用<code>*</code>或者<code>_</code> ,加粗则双写上述字符</p>
+<p><em>example</em> <strong>example</strong> </p>
+</li>
+</ul>
+<ul>
+<li><p>删除线使用<code>~~</code> </p>
+<p><del>example</del></p>
+</li>
+<li><p>下划线，由raw html支持 ，<code>&lt;u&gt;Underline&lt;/u&gt;</code>为</p>
+<p><u>Underline</u> </p>
+</li>
+<li><p>Emoji :smile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:smile:  //在Typora编辑器上能显示，blog页面好像不支持</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
-<p>​    这个问题困扰了我很久，因为一些文档版本并没有说明这一点，一直以为是erlang版本的问题导致编译失败。</p>
-<p>​    出现下列提示则表示编译成功：</p>
-<pre><font color="#88BED4">===&gt; Starting relx build process ...</font>
-<font color="#88BED4">===&gt; Resolving OTP Applications from directories:</font>
-<font color="#88BED4">          /home/cehang/emqx-rel/deps</font>
-<font color="#88BED4">          /usr/local/lib/erlang/lib</font>
-<font color="#88BED4">          /home/cehang/emqx-rel/apps</font>
-<font color="#88BED4">===&gt; Resolved emqx-3.0.1</font>
-<font color="#88BED4">===&gt; Including Erts from /usr/local/lib/erlang</font>
-<font color="#88BED4">===&gt; release successfully created!</font>
-</pre>
-
-<h5 id="EMQ插件入门"><a href="#EMQ插件入门" class="headerlink" title="EMQ插件入门"></a><strong>EMQ插件入门</strong></h5><p>​    编译完EMQ后，会在deps目录中生成系统依赖包以及插件包。其中<em>emq_plugin_template</em>为EMQ提供的插件模板。基于插件模板可以定制自己的功能插件，比如我们将要实现的emq kafka桥架功能插件。针对插件开发<a href="http://docs.emqtt.cn/zh_CN/latest/plugins.html#emq-x-r3-0" target="_blank" rel="noopener">官方文档</a>也给出了一些简略的说明。</p>
-<p>​    将插件模板复制到同目录下，更改名字创建自己的插件，其目录列表如下：</p>
-<pre>├── TODO
-├── <font color="#6987E0"><b>test</b></font>
-│   └── emqx_plugin_template_SUITE.erl
-├── <font color="#6987E0"><b>src</b></font>
-│   ├── emqx_plugin_helloworld_sup.erl
-│   ├── emqx_plugin_helloworld.erl
-│   ├── emqx_plugin_helloworld_app.erl
-│   ├── emqx_cli_helloworld.erl
-│   ├── emqx_auth_helloworld.erl
-│   └── emqx_acl_helloworld.erl
-├── rebar.config
-├── README.md
-├── Makefile
-├── LICENSE
-├── <font color="#6987E0"><b>etc</b></font>
-│   └── emqx_plugin_helloworld.config
-└── erlang.mk
-</pre>
-
-<p>​    其中<em>.config为配置文件，\</em>_SUITE为单元测试文件，/src/*.erl是插件的源码。修改目录下源码中的模块名字，改问与文件名对应的插件名字。更改完执行make，如果报错则检查是否修改完整。</p>
-<p>​    回到主目录下，修改<code>relx.config</code>文件，添加:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;emqx_plugin_helloworld,load&#125;</span><br></pre></td></tr></table></figure>
-<p>​    在主目录下make，编译成功后运行EMQ，然后可通过EMQ自带的Dashboard检查插件添加效果。</p>
-<p>​    修改<code>emqx_plugin_helloworld.erl</code>文件，在load和unload中分别添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;load helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io:format(&quot;unload helloworld plugin~n&quot;,[]).</span><br></pre></td></tr></table></figure>
-<p>​    重新编译插件和工程，在控制台模式下启动emq</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/emqx-rel/_rel/emqx/bin/</span><br><span class="line">./emqx console</span><br></pre></td></tr></table></figure>
-<p>​    在dashboard中启动和关闭helloworld插件</p>
-<pre>Starting emqx on node emqx@127.0.0.1
-Start http:management listener on 8080 successfully.
-Start http:dashboard listener on 18083 successfully.
-Start mqtt:tcp listener on 127.0.0.1:11883 successfully.
-Start mqtt:tcp listener on 0.0.0.0:1883 successfully.
-Start mqtt:ws listener on 0.0.0.0:8083 successfully.
-Start mqtt:ssl listener on 0.0.0.0:8883 successfully.
-Start mqtt:wss listener on 0.0.0.0:8084 successfully.
-EMQ X Broker b461e26f is running now!
-Eshell V10.0  (abort with ^G)
-(emqx@127.0.0.1)1&gt; 
-(emqx@127.0.0.1)1&gt; load helloworld plugin
-(emqx@127.0.0.1)1&gt; unload helloworld plugin
-</pre>
       
     </div>
     
@@ -403,7 +403,7 @@ Eshell V10.0  (abort with ^G)
       
         <div class="post-tags">
           
-            <a href="/tags/MQTT/" rel="tag"># MQTT</a>
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
           
         </div>
       
@@ -416,18 +416,14 @@ Eshell V10.0  (abort with ^G)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/27/2019-03-27-MQTT数据持久化/" rel="next" title="MQTT数据持久化">
-                <i class="fa fa-chevron-left"></i> MQTT数据持久化
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/31/2019-03-31-MQTT数据持久化(三)/" rel="prev" title="MQTT数据持久化(三)">
-                MQTT数据持久化(三) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/25/2019-03-25-hello-markdown/" rel="prev" title="Hello Markdown">
+                Hello Markdown <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +576,7 @@ Eshell V10.0  (abort with ^G)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#源码编译EMQ"><span class="nav-number">1.1.</span> <span class="nav-text">源码编译EMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EMQ插件入门"><span class="nav-number">1.2.</span> <span class="nav-text">EMQ插件入门</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-Markdown？"><span class="nav-number">1.</span> <span class="nav-text">What is Markdown？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markdown语法"><span class="nav-number">2.</span> <span class="nav-text">Markdown语法</span></a></li></ol></div>
             
 
           </div>
