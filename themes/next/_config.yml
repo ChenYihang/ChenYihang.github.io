@@ -226,12 +226,12 @@ auto_excerpt:
 post_meta:
   item_text: true
   created_at: true
-  updated_at: false
+  updated_at: true
   categories: true
 
 # Post wordcount display settings
 # Dependencies: https://github.com/willin/hexo-wordcount
-post_wordcount:
+post_wordcount: 
   item_text: true
   wordcount: false
   min2read: false
@@ -382,13 +382,13 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: false
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  enable: true
+  appid: N7xL975zgBYUXHBddXaTSIaf-MdYXbMMI
+  appkey: 1UTSRVIzvfSbGuGkksF9Xznv
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: Just go go # comment box placeholder
-  avatar: mm # gravatar style
+  avatar: wavatar # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
 
@@ -399,7 +399,8 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC80MzQyNi8xOTk2Nw
+livere_uid: 
+#MTAyMC80MzQyNi8xOTk2Nw
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
