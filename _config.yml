@@ -75,6 +75,20 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+
+douban:
+  user: 76775021
+  builtin: true
+  book:
+    title: 'This is my book title'
+    quote: 'This is my book quote'
+  movie:
+    title: 'This is my movie title'
+    quote: 'This is my movie quote'
+  game:
+    title: 'This is my game title'
+    quote: 'This is my game quote'
+  timeout: 10000 
   
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

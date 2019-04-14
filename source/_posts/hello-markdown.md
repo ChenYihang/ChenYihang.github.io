@@ -3,6 +3,7 @@ title: hello markdown
 date: 2019-03-25 18:35:40
 tags: Markdown
 categories: Markdown
+update: 2019-04-13
 ---
 
 #### What is Markdown？
@@ -96,3 +97,4 @@ categories: Markdown
  ```
   :smile:  //在Typora编辑器上能显示，blog页面好像不支持
  ```
+
