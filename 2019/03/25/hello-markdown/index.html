@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Cehang&#39;s blog">
 <meta property="og:description" content="What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。 Markdown语法 标题，使用1-6个#字符作为行起始，对应6个等级，如 123# H1## H2### H3  引用，Markdown使用ema">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-12T01:38:10.990Z">
+<meta property="og:updated_time" content="2019-04-15T01:22:37.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hello markdown">
 <meta name="twitter:description" content="What is Markdown？Markdown是一种纯文本格式的标记语言，其语法目标是成为一种适用于网络的书写语言。Markdown兼容HTML，但它不是一种发布的格式，而是一种书写的格式，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。 Markdown语法 标题，使用1-6个#字符作为行起始，对应6个等级，如 123# H1## H2### H3  引用，Markdown使用ema">
@@ -100,7 +100,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -220,6 +220,26 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            Books
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-film"></i> <br>
+            
+            Movies
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -288,7 +308,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-15T09:22:37+08:00">
+                2019-04-15
+              </time>
             
           </span>
 
@@ -317,6 +349,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/25/hello-markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/25/hello-markdown/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -405,7 +447,8 @@
 <p><u>Underline</u> </p>
 </li>
 <li><p>Emoji :smile:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:smile:  //在Typora编辑器上能显示，blog页面好像不支持</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:smile:  //在Typora编辑器上能显示，blog页面好像不支持</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -494,9 +537,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC80MzQyNi8xOTk2Nw"></div>
     </div>
-
   
 
 
@@ -802,26 +843,37 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-
-
-
-
-
-
-
-
-
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'N7xL975zgBYUXHBddXaTSIaf-MdYXbMMI',
+        appKey: '1UTSRVIzvfSbGuGkksF9Xznv',
+        placeholder: 'Just go go',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
