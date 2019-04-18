@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MQTT,">
+  <meta name="keywords" content="muduo c++ 多线程,">
 
 
 
@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
-<meta name="keywords" content="MQTT">
+<meta name="description" content="记录muduo库及多线程的一些要点，主要参考于陈硕《Linux多线程服务端编程》  一  线程安全的对象生命期管理线程安全的定义一个线程安全的类应大致满足一下三个条件：  多个线程同时访问时，其表现出正确的行为  无论操作系统如何调度这些线程，无论这些线程的执行顺序如何交织  调用端代码无须额外的同步或其他协调动作   使用同步原语保护内部状态编写单个的线程安全类： 12345678910111">
+<meta name="keywords" content="muduo c++ 多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MQTT数据持久化">
-<meta property="og:url" content="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/index.html">
+<meta property="og:title" content="muduo学习日志">
+<meta property="og:url" content="https:://imcehang.xyz/2019/04/18/muduo学习日志/index.html">
 <meta property="og:site_name" content="Cehang&#39;s blog">
-<meta property="og:description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
+<meta property="og:description" content="记录muduo库及多线程的一些要点，主要参考于陈硕《Linux多线程服务端编程》  一  线程安全的对象生命期管理线程安全的定义一个线程安全的类应大致满足一下三个条件：  多个线程同时访问时，其表现出正确的行为  无论操作系统如何调度这些线程，无论这些线程的执行顺序如何交织  调用端代码无须额外的同步或其他协调动作   使用同步原语保护内部状态编写单个的线程安全类： 12345678910111">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
-<meta property="og:updated_time" content="2019-04-12T01:38:10.984Z">
+<meta property="og:image" content="https:/2019/04/18/muduo学习日志/fig1.png">
+<meta property="og:image" content="https:/2019/04/18/muduo学习日志/fig2.png">
+<meta property="og:updated_time" content="2019-04-18T07:06:13.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MQTT数据持久化">
-<meta name="twitter:description" content="如何对MQTT做数据的存储​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：  在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符#来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。 借助EMQ的钩子函数与R">
-<meta name="twitter:image" content="https:/2019/03/27/MQTT数据持久化/photo1.png">
+<meta name="twitter:title" content="muduo学习日志">
+<meta name="twitter:description" content="记录muduo库及多线程的一些要点，主要参考于陈硕《Linux多线程服务端编程》  一  线程安全的对象生命期管理线程安全的定义一个线程安全的类应大致满足一下三个条件：  多个线程同时访问时，其表现出正确的行为  无论操作系统如何调度这些线程，无论这些线程的执行顺序如何交织  调用端代码无须额外的同步或其他协调动作   使用同步原语保护内部状态编写单个的线程安全类： 12345678910111">
+<meta name="twitter:image" content="https:/2019/04/18/muduo学习日志/fig1.png">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+  <link rel="canonical" href="https:://imcehang.xyz/2019/04/18/muduo学习日志/">
 
 
 
 
 
-  <title>MQTT数据持久化 | Cehang's blog</title>
+  <title>muduo学习日志 | Cehang's blog</title>
   
 
 
@@ -275,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/">
+    <link itemprop="mainEntityOfPage" href="https:://imcehang.xyz/2019/04/18/muduo学习日志/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cehang">
@@ -292,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MQTT数据持久化</h1>
+          <h1 class="post-title" itemprop="name headline">muduo学习日志</h1>
         
 
         <div class="post-meta">
@@ -304,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T18:27:20+08:00">
-                2019-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T14:33:32+08:00">
+                2019-04-18
               </time>
             
 
@@ -320,34 +321,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-12T09:38:10+08:00">
-                2019-04-12
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-18T15:06:13+08:00">
+                2019-04-18
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MQTT/" itemprop="url" rel="index">
-                    <span itemprop="name">MQTT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -357,8 +336,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/27/MQTT数据持久化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/27/MQTT数据持久化/" itemprop="commentCount"></span>
+                <a href="/2019/04/18/muduo学习日志/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/muduo学习日志/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,37 +365,48 @@
       
 
       
-        <h4 id="如何对MQTT做数据的存储"><a href="#如何对MQTT做数据的存储" class="headerlink" title="如何对MQTT做数据的存储"></a>如何对MQTT做数据的存储</h4><p>​    本地MQTT client成功发布消息到云端Broker后，下一步需要对消息数据进行存储及后续处理，或插入MySQL，目前大致有以下方法：</p>
-<ul>
-<li>在服务器端添加一个附加客户端，让其订阅所需数据主题，一般通过通配符<code>#</code>来实现。该客户端就能够接收代理分发的所需消息，进而执行所需操作。该方法优点是实现简单，缺点是当随着订阅数据的增加，处理压力增大。</li>
-<li>借助<a href="http://www.emqtt.com/" target="_blank" rel="noopener">EMQ</a>的钩子函数与REST API，参考<a href="https://www.raviyp.com/embedded/233-learn-how-to-save-mqtt-messages-into-a-mysql-database" target="_blank" rel="noopener">Learn, How to save MQTT messages into a MySQL Database</a></li>
-<li>借助EMQ的钩子函数以及一个消息队列中间件<a href="http://kafka.apache.org/" target="_blank" rel="noopener">Kafka</a>,通过kafka聚合和采集消息，缓冲到数据仓库中以待后续处理。基于应用框架特点使用此方法作为解决方案。</li>
-</ul>
-<h4 id="EMQ-HOOK"><a href="#EMQ-HOOK" class="headerlink" title="EMQ-HOOK"></a><strong>EMQ-HOOK</strong></h4><p>​    EMQ的一个优点是其优秀的扩展性，用户可以通过模块注册和钩子(Hooks)机制，支持用户开发扩展插件定制服务器认证鉴权与业务功能。</p>
-<blockquote>
-<p>​    钩子(Hook) 采用职责链设计模式(<a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" target="_blank" rel="noopener">Chain-of-responsibility_pattern</a>)，扩展模块或插件向钩子注册回调函数，系统在客户端上下线、主题订阅或消息发布确认时，触发钩子顺序执行回调函数。EMQ 消息服务器在客户端上下线、主题订阅、消息收发位置设计了扩展钩子(Hook)。</p>
+        <blockquote>
+<p>记录muduo库及多线程的一些要点，主要参考于陈硕《Linux多线程服务端编程》</p>
 </blockquote>
-<p>​    由于对Erlang实在过于陌生，其具体实现原理以及使用方法可参考<a href="https://developer.emqx.io/docs/emq/v3/cn/design.html#hook" target="_blank" rel="noopener">EMQ官方文档</a>。</p>
-<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a><strong>Kafka</strong></h4><h5 id="What‘s-it"><a href="#What‘s-it" class="headerlink" title="What‘s it"></a><strong>What‘s it</strong></h5><p><a href="http://kafka.apache.org/" target="_blank" rel="noopener">    Apache kafka</a>是一种消息中间件，是目标是实现实时的流处理，采用了生产者消费者模型并可作为集群运行在多个服务器上。更多关于Kafka的介绍参考官方文档或中文教程：<a href="http://orchome.com/kafka/index" target="_blank" rel="noopener">http://orchome.com/kafka/index</a> 。</p>
-<h5 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use"></a><strong>How to use</strong></h5><p>​    安装部署参考下面链接：</p>
-<blockquote>
-<p>ubuntu18.04下Kafka安装与部署 <a href="https://blog.csdn.net/u010889616/article/details/80641922" target="_blank" rel="noopener">https://blog.csdn.net/u010889616/article/details/80641922</a></p>
-</blockquote>
-<p>​    遇到的问题：</p>
-<ul>
-<li><p>Kafka自带的zookeeper在我的环境下（ubuntu 18.04）运行不正常，所以需要独立安装zookeeper。</p>
-<blockquote>
-<p>解决方法：</p>
-</blockquote>
+<h4 id="一-线程安全的对象生命期管理"><a href="#一-线程安全的对象生命期管理" class="headerlink" title="一  线程安全的对象生命期管理"></a>一  线程安全的对象生命期管理</h4><h5 id="线程安全的定义"><a href="#线程安全的定义" class="headerlink" title="线程安全的定义"></a>线程安全的定义</h5><p>一个线程安全的类应大致满足一下三个条件：</p>
+<ol>
+<li><p>多个线程同时访问时，其表现出正确的行为</p>
 </li>
-<li><p>建立消费者时报错：<code>zookeeper is not a recognized option</code> ，原因是kafka版本问题。</p>
-<blockquote>
-<p>解决方法：参考<a href="https://www.jianshu.com/p/80a10811d5cb" target="_blank" rel="noopener">https://www.jianshu.com/p/80a10811d5cb</a>    </p>
-</blockquote>
-<p>部署成功如下：</p>
+<li><p>无论操作系统如何调度这些线程，无论这些线程的执行顺序如何交织</p>
 </li>
-</ul>
-<p><img src="/2019/03/27/MQTT数据持久化/photo1.png" alt="部署成功"></p>
+<li><p>调用端代码无须额外的同步或其他协调动作</p>
+</li>
+</ol>
+<p>使用<strong>同步原语</strong>保护内部状态编写单个的线程安全类：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadsafeCounter</span> &#123;</span></span><br><span class="line">	<span class="keyword">mutable</span> <span class="built_in">std</span>::mutex m; <span class="comment">// “ M&amp;M 规则”： mutable 与 mutex 一并出场</span></span><br><span class="line">	<span class="keyword">int</span> data = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; lk(m);</span><br><span class="line">		<span class="keyword">return</span> data;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">inc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; lk(m);</span><br><span class="line">		++data;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="对象的构造"><a href="#对象的构造" class="headerlink" title="对象的构造"></a>对象的构造</h5><p>线程安全要求在构造期间不泄露this指针，原因在于如果构造期间如果对象没有完成初始化而泄漏给其他对象</p>
+<ol>
+<li>不要在构造函数中注册回调</li>
+<li>不要再构造函数中把this传给跨线程的对象</li>
+</ol>
+<h5 id="对象的析构"><a href="#对象的析构" class="headerlink" title="对象的析构"></a>对象的析构</h5><p>mutex在析构时的局限性：作为成员的互斥器本身必须是有效的，而析构函数将破坏了这一假设，它会把mutex成员变量销毁掉。因此作为数据成员的mutex 不能保护析构。析构过程本身也不需要保护，因为只有别的线程都访问不到这个对象时，析构才是安全的。</p>
+<h5 id="空悬指针问题"><a href="#空悬指针问题" class="headerlink" title="空悬指针问题"></a>空悬指针问题</h5><p>当指针暴露给别的线程是，指向对象的原始指针往往是不可靠的。</p>
+<p><img src="/2019/04/18/muduo学习日志/fig1.png" alt="fig1"></p>
+<p>空悬指针式一种典型的内存错误。解决空悬指针的办法是引入一层间接性，让指针所指的对象永久有效。</p>
+<p><img src="/2019/04/18/muduo学习日志/fig2.png" alt="fig2"></p>
+<p>但安全释放object又是一个问题。解决办法是是引入引用计数，整数计数型智能指针shared_ptr/weak_ptr。</p>
+<p>关于shared_ptr / weak_ptr 的有关说明，在<a href="https://zh.cppreference.com/w/cpp/memory/shared_ptr" target="_blank" rel="noopener">cppreference</a>均有较为详细的说明。简而言之，shared_ptr控制对象的生命期，它是强引用，只要对象存在指向它的shared_ptr存在，该对象就不会被销毁。使用weak_ptr探查对象的生死。</p>
+<p>shared_ptr实现线程安全的对象释放，但其shared_ptr本身不是100线程安全的。</p>
+<h4 id="二-线程同步"><a href="#二-线程同步" class="headerlink" title="二  线程同步"></a>二  线程同步</h4><h5 id="四项原则"><a href="#四项原则" class="headerlink" title="四项原则"></a>四项原则</h5><ol>
+<li>尽量最低限度地共享对象，减少需要同步的场合</li>
+<li>使用高级的并发编程构件，如TaskQueue</li>
+<li>不得已使用底层同步原语（primitives）时，只用非递归的互斥器和条件变量，慎用读写锁，不要用信号量</li>
+<li>除了使用atomic整数之外，不自己编写lock-free代码，也不要用内核级同步原语。</li>
+</ol>
+<h5 id="互斥器"><a href="#互斥器" class="headerlink" title="互斥器"></a>互斥器</h5><p>互斥器是使用最多的同步原语，它保护了临界区，任何一个时刻最多只能有一个线程在此mutex划出的临界区内活动。使用互斥器时要注意以下几点：</p>
+<ol>
+<li><p>使用RAII封装mutex的创建、销毁、加锁、解锁四个操作。</p>
+</li>
+<li><p>只用非递归的mutex</p>
+</li>
+<li><p>不手工调用lock和unlock函数，一切交给栈上的Guard对象的构造和析构函数负责</p>
+</li>
+</ol>
 
       
     </div>
@@ -437,7 +427,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https:://imcehang.xyz/2019/03/27/MQTT数据持久化/" title="MQTT数据持久化">https:://imcehang.xyz/2019/03/27/MQTT数据持久化/</a>
+    <a href="https:://imcehang.xyz/2019/04/18/muduo学习日志/" title="muduo学习日志">https:://imcehang.xyz/2019/04/18/muduo学习日志/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -452,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MQTT/" rel="tag"># MQTT</a>
+            <a href="/tags/muduo-c-多线程/" rel="tag"># muduo c++ 多线程</a>
           
         </div>
       
@@ -465,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/hello-markdown/" rel="next" title="hello markdown">
-                <i class="fa fa-chevron-left"></i> hello markdown
+              <a href="/2019/03/31/MQTT数据持久化-三/" rel="next" title="MQTT数据持久化(三)">
+                <i class="fa fa-chevron-left"></i> MQTT数据持久化(三)
               </a>
             
           </div>
@@ -474,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/30/MQTT数据持久化-二/" rel="prev" title="MQTT数据持久化(二)">
-                MQTT数据持久化(二) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何对MQTT做数据的存储"><span class="nav-number">1.</span> <span class="nav-text">如何对MQTT做数据的存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMQ-HOOK"><span class="nav-number">2.</span> <span class="nav-text">EMQ-HOOK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka"><span class="nav-number">3.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What‘s-it"><span class="nav-number">3.1.</span> <span class="nav-text">What‘s it</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-use"><span class="nav-number">3.2.</span> <span class="nav-text">How to use</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-线程安全的对象生命期管理"><span class="nav-number">1.</span> <span class="nav-text">一  线程安全的对象生命期管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程安全的定义"><span class="nav-number">1.1.</span> <span class="nav-text">线程安全的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象的构造"><span class="nav-number">1.2.</span> <span class="nav-text">对象的构造</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象的析构"><span class="nav-number">1.3.</span> <span class="nav-text">对象的析构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空悬指针问题"><span class="nav-number">1.4.</span> <span class="nav-text">空悬指针问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-线程同步"><span class="nav-number">2.</span> <span class="nav-text">二  线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#四项原则"><span class="nav-number">2.1.</span> <span class="nav-text">四项原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#互斥器"><span class="nav-number">2.2.</span> <span class="nav-text">互斥器</span></a></li></ol></li></ol></div>
             
 
           </div>
