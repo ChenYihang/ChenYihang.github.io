@@ -80,11 +80,11 @@ douban:
   user: 76775021
   builtin: true
   book:
-    title: 'This is my book title'
-    quote: 'This is my book quote'
+    title: '我的豆瓣书单'
+    quote: '人丑就要多读书'
   movie:
-    title: 'This is my movie title'
-    quote: 'This is my movie quote'
+    title: '我的豆瓣影单'
+    quote: '总是在电影中看到自己的人生'
   game:
     title: 'This is my game title'
     quote: 'This is my game quote'
