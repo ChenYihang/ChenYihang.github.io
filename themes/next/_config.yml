@@ -97,8 +97,8 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  Books: /books/ || book    
-  Movies: /movies/ || film
+  书籍: /books/ || book    
+  电影: /movies/ || film
   
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap

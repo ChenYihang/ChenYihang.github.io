@@ -108,7 +108,7 @@
                 {% endfor %}
             </div>
           {% endif %}
-
+		 
           {% set cc = {'by': 1, 'by-nc': 1, 'by-nc-nd': 1, 'by-nc-sa': 1, 'by-nd': 1, 'by-sa': 1, 'zero': 1} %}
           {% if theme.creative_commons in cc %}
             <div class="cc-license motion-element" itemprop="license">
@@ -117,6 +117,8 @@
               </a>
             </div>
           {% endif %}
+		  
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1645112&auto=1&height=66"></iframe>
 
           {# Blogroll #}
           {% if theme.links %}
